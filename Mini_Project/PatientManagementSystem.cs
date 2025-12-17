@@ -122,7 +122,7 @@ namespace HospitalManagementSystem
         {
             if (billingStrategy == null)
             {
-                Console.WriteLine("⚠ No billing strategy set!");
+                Console.WriteLine(" No billing strategy set!");
                 return;
             }
 
@@ -284,7 +284,7 @@ namespace HospitalManagementSystem
         // Event handler for patient admission
         private void OnPatientAdmitted(object sender, PatientAdmittedEventArgs e)
         {
-            Console.WriteLine($"🔔 [{departmentName}] NOTIFICATION:");
+            Console.WriteLine($" [{departmentName}] NOTIFICATION:");
             Console.WriteLine($"   New patient admitted: {e.PatientName}");
             Console.WriteLine($"   Type: {e.PatientType}");
             Console.WriteLine($"   Time: {e.AdmissionTime:HH:mm:ss}");
@@ -294,7 +294,7 @@ namespace HospitalManagementSystem
         // Event handler for bill generation
         private void OnBillGenerated(object sender, BillGeneratedEventArgs e)
         {
-            Console.WriteLine($"💰 [{departmentName}] BILLING NOTIFICATION:");
+            Console.WriteLine($" [{departmentName}] BILLING NOTIFICATION:");
             Console.WriteLine($"   Patient: {e.PatientName} (ID: {e.PatientId})");
             Console.WriteLine($"   Billing Type: {e.BillingType}");
             Console.WriteLine($"   Amount: ₹{e.FinalBill:F2}");
@@ -350,7 +350,7 @@ namespace HospitalManagementSystem
                     Patient patient = new Patient(patientId, patientName, patientAge, disease);
 
                     // Select Patient Type
-                    Console.WriteLine("\n🏥 PATIENT TYPE SELECTION");
+                    Console.WriteLine("\n PATIENT TYPE SELECTION");
                     Console.WriteLine(new string('─', 62));
                     Console.WriteLine("1. General Ward (Basic medical care)");
                     Console.WriteLine("2. Emergency (Critical care - 50% surcharge)");
@@ -359,7 +359,7 @@ namespace HospitalManagementSystem
                     int patientTypeChoice = int.Parse(Console.ReadLine());
 
                     // Enter Treatment Cost
-                    Console.WriteLine("\n💵 TREATMENT COST");
+                    Console.WriteLine("\n TREATMENT COST");
                     Console.WriteLine(new string('─', 62));
                     Console.Write("Base Treatment Cost (₹): ");
                     double baseCost = double.Parse(Console.ReadLine());
@@ -382,7 +382,7 @@ namespace HospitalManagementSystem
                             icuDept.SubscribeToAdmission(patientType);
                             break;
                         default:
-                            Console.WriteLine("❌ Invalid patient type selection!");
+                            Console.WriteLine(" Invalid patient type selection!");
                             continue;
                     }
 
@@ -392,7 +392,7 @@ namespace HospitalManagementSystem
                     patientType.AdmitPatient();
 
                     // Select Billing Strategy
-                    Console.WriteLine("\n💰 BILLING STRATEGY");
+                    Console.WriteLine("\n BILLING STRATEGY");
                     Console.WriteLine(new string('─', 62));
                     Console.WriteLine("1. Standard Billing (No discount/surcharge)");
                     Console.WriteLine("2. Insurance Coverage (40% discount)");
@@ -436,7 +436,7 @@ namespace HospitalManagementSystem
                             billingDescription = "VIP Package (20% premium)";
                             break;
                         default:
-                            Console.WriteLine("❌ Invalid billing choice! Applying standard billing.");
+                            Console.WriteLine(" Invalid billing choice! Applying standard billing.");
                             patientType.SetBillingStrategy(BillingStrategies.StandardBilling);
                             billingDescription = "Standard Billing (Default)";
                             break;
@@ -450,15 +450,15 @@ namespace HospitalManagementSystem
                 }
                 catch (FormatException)
                 {
-                    Console.WriteLine("\n❌ ERROR: Invalid input format! Please enter valid data.");
+                    Console.WriteLine("\n ERROR: Invalid input format! Please enter valid data.");
                 }
                 catch (ArgumentException ex)
                 {
-                    Console.WriteLine($"\n❌ ERROR: {ex.Message}");
+                    Console.WriteLine($"\n ERROR: {ex.Message}");
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"\n❌ UNEXPECTED ERROR: {ex.Message}");
+                    Console.WriteLine($"\n UNEXPECTED ERROR: {ex.Message}");
                 }
 
                 // Ask to continue or exit
